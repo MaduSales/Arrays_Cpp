@@ -26,7 +26,7 @@ int main()
             highest = num[count];
         }
         else if (num[count] < lowest){
-            highest = num[count];
+            lowest = num[count];
         }
     }
     
