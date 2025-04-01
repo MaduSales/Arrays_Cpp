@@ -4,25 +4,29 @@
 using namespace std;
 
 int gen();
-int preencheAray();
-int ordenacao();
+void preencheArray(int[], int);
+void ordenacao(int[], int);
+void arrayOrdenado(int[], int);
 
 int main()
 {
-    int size = 10, prev, next, aux;
+    int size = 10;
     int num[size];
     
     
     cout << "Array original: \n";
-    for(aux = 0; aux < size; aux++){
-        cout << num[aux] << " ";
-    }
+    preencheArray(num, size);
+    arrayOrdenado(num, size);
+    
     
     cout << "\n\nArray ordenado: \n";
-    for(aux = 0; aux < size; aux++){
-        cout << num[aux] << " ";
-    }
- 
+    ordenacao(num, size);
+    arrayOrdenado(num, size);
+
+    return 0;
+}
+
+
 int gen()
 {
     random_device rd;
@@ -32,18 +36,21 @@ int gen()
     return dis(gen_numb);
 }
 
-int preencheArray(){
-    for(aux = 0; aux < size; aux++){
+
+void preencheArray(int num[], int size){
+    for(int aux = 0; aux < size; aux++){
         num[aux] = gen();
     }
 }
 
-int ordenacao(){
-     for(prev = 0; prev <= size-2; prev++){
-        for(next = prev+1; next <= size-1; next++){
+
+void ordenacao(int num[], int size){
+    int aux;
+     for(int prev = 0; prev <= size-2; prev++){
+        for(int next = prev+1; next <= size-1; next++){
             aux = num[prev];
             
-            if(num[prev] < num[next]){
+            if(num[prev] > num[next]){
                 num[prev] = num[next];
                 num[next] = aux;
             }
@@ -51,5 +58,9 @@ int ordenacao(){
     }
 }
 
-    return 0;
+
+void arrayOrdenado(int num[], int size){
+    for(int aux = 0; aux < size; aux++){
+        cout << num[aux] << " ";
+    }
 }
